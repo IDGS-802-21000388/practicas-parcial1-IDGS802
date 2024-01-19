@@ -9,6 +9,18 @@ class Numeros:
         self.lst.sort()
         print("La lista de los valores ordenados son: ", self.lst)
 
+    def duplicados(self):
+        self.lst.sort()
+        unicos = []
+        duplicados = []
+
+        for n in self.lst:
+            if n in unicos and n not in duplicados:
+                duplicados.append(n)
+            else:
+                unicos.append(n)
+        print("La lista de los valores duplicados son: ", duplicados)
+
     def pares(self):
         self.lst.sort()
 
@@ -36,9 +48,10 @@ class Numeros:
             lstValores.append(num)
 
         obj = Numeros(lstValores)
-        obj.ordenar()
-        obj.pares()
-        obj.impares()
+        #obj.ordenar()
+        #obj.pares()
+        #obj.impares()
+        obj.duplicados()
 
 if __name__ == "__main__":
     Numeros.main()
