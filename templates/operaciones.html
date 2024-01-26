@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{%block content %}
+
+<form action = "/resultado" method = "POST">
+    <label> Numero 1: </label>
+    <input type="text" name="n1"/><br>
+    <label> Numero 2: </label>
+    <input type="text" name="n2"/><br>
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="operacion" id="suma" value="suma">
+        <label class="form-check-label" for="suma">
+          Suma
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="operacion" id="resta" value="resta">
+        <label class="form-check-label" for="resta">
+          Resta
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="operacion" id="multiplicacion" value="multiplicacion">
+        <label class="form-check-label" for="multiplicacion">
+          Multiplicación
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="operacion" id="division" value="division">
+        <label class="form-check-label" for="division">
+          División
+        </label>
+      </div>
+
+    <input value="Calcular" type="submit"/>
+</form>
+<p>El resultado es: {{ resultado }}</p>
+{% endblock %}
