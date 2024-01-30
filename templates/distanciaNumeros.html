@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+{%import "_macros.html" as macros%}
+    <h1>Distancia entre los numeros</h1>
+
+    <form action="" method="post">
+        {{ macros.input_Form(form.x1, class="form-control")}}
+        {{ macros.input_Form(form.x2, class="form-control")}}
+        {{ macros.input_Form(form.y1, class="form-control")}}
+        {{ macros.input_Form(form.y2, class="form-control")}}
+        <input type="submit" name="btn1">
+    </form>
+    
+    El resultado es: {{ res }}
+
+{% endblock %}
