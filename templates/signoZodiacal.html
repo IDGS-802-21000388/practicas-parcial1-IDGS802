@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+{%import "_macros.html" as macros%}
+    <h1 style="font-family: roboto;">Datos personales</h1>
+    <form action="" method="post" style="font-family: roboto;">
+        {{ macros.input_Form(form.nombre, class="form-control")}}
+        {{ macros.input_Form(form.apaterno, class="form-control")}}
+        {{ macros.input_Form(form.amaterno, class="form-control")}}
+        {{ macros.input_Form(form.dia, class="form-control")}}
+        {{ macros.input_Form(form.mes, class="form-control")}}
+        {{ macros.input_Form(form.anio, class="form-control")}}
+        {{ macros.input_Form(form.sexo, class="form-control")}}
+        <input value="Limpiar" type="submit" name="btnLimpiar">
+        <input value="Siguiente" type="submit" name="btnSiguiente">
+    </form>
+{% endblock %}
