@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 import forms, math
+from io import open
 
 app = Flask(__name__)
 
@@ -105,6 +106,39 @@ def signo():
             return render_template('resultadoSigno.html', src = src, datosPersonales = datosPersonales, edad = edad, signoZod = signoZod)
 
     return render_template('signoZodiacal.html', form = signoForm)
+
+@app.route('/palabras', methods=["GET","POST"])
+def palabra():
+    enviar_form = forms.EnviarForm(request.form)
+    buscar_form = forms.BuscarForm(request.form)
+    resultados = '' 
+    print(request.form)
+    if request.method == "POST":
+        if 'btnEnviar' in request.form and enviar_form.validate():
+            ingles = enviar_form.ingles.data
+            espanol = enviar_form.espanol.data
+            with open('palabras.txt', 'a') as archivo_texto:
+                archivo_texto.write(f"\n{ingles}:{espanol}")
+           
+        elif 'btnBuscar' in request.form and buscar_form.validate():
+            palabra = buscar_form.palabra.data
+            idioma = buscar_form.radios.data
+            with open('palabras.txt', 'r') as archivo_texto:
+                for lineas in archivo_texto.readlines():
+                    partes = lineas.strip().split(":")
+                    if idioma == 'ingles':
+                        if partes[0].lower() == palabra.lower():
+                            resultados = f"Se encontró la palabra: {partes[1]}"
+                            break
+                    elif idioma == 'español':
+                        if partes[1].lower() == palabra.lower():
+                            resultados = f"Se encontró la palabra: {partes[0]}"
+                            break
+                if not resultados:
+                    resultados = "La palabra no existe"
+
+    return render_template('palabras.html', enviar_form=enviar_form, buscar_form=buscar_form, resultados=resultados)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

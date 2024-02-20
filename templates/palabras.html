@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+{%import "_macros.html" as macros%}
+    <h1>Diccionario</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="" method="POST" novalidate>
+                {{ macros.render_field(enviar_form.ingles, class="form-control")}}
+                {{ macros.render_field(enviar_form.espanol, class="form-control")}}
+                <input type="submit" class="btn btn-success" name="btnEnviar" value="enviar">
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form action="" method="POST" novalidate>
+                {{ macros.render_field(buscar_form.radios, class="form-control")}}
+                {{ macros.render_field(buscar_form.palabra, class="form-control")}}
+                <input type="submit" class="btn btn-primary" name="btnBuscar" value="buscar">
+            </form>
+        </div>
+    </div>
+    {% if resultados %}
+        <p>{{ resultados }}</p>
+    {% endif %}
+{% endblock %}

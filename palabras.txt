@@ -1,0 +1,5 @@
+purple:morado
+yellow:amarillo
+orange:naranja
+black:negro
+shoes:zapato
